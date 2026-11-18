@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Your SSC mock tests, previous-year questions and chapter practice.">
+  <title>Dashboard · SSC Flix</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./dashboard.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#dashboard">Skip to dashboard</a>
+  <aside class="sidebar" aria-label="Sidebar">
+    <a class="brand" href="./" aria-label="SSC Flix dashboard"><span class="mark" aria-hidden="true">S</span><strong>SSC<span>Flix</span></strong></a>
+    <nav aria-label="Study navigation">
+      <a class="nav-item" href="./" aria-current="page" aria-label="Dashboard"><span class="glyph" aria-hidden="true">⌂</span><span class="nav-label">Dashboard</span></a>
+      <button class="nav-item" data-activity="mock" aria-label="Mock Tests"><span class="glyph" aria-hidden="true">▤</span><span class="nav-label">Mock Tests</span></button>
+      <button class="nav-item" data-activity="pyq" aria-label="PYQs"><span class="glyph" aria-hidden="true">◷</span><span class="nav-label">PYQs</span></button>
+      <button class="nav-item" data-activity="chapter" aria-label="Chapter Tests"><span class="glyph" aria-hidden="true">▦</span><span class="nav-label">Chapter Tests</span></button>
+    </nav>
+    <nav class="extra-nav" aria-label="Workspace navigation">
+      <button class="nav-item" data-panel="history" aria-label="My Tests"><span class="glyph" aria-hidden="true">☷</span><span class="nav-label">My Tests</span></button>
+      <button class="nav-item" data-panel="preferences" aria-label="Preferences"><span class="glyph" aria-hidden="true">⚙</span><span class="nav-label">Preferences</span></button>
+    </nav>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <a class="brand mobile-brand" href="./" aria-label="SSC Flix dashboard"><span class="mark" aria-hidden="true">S</span><strong>SSC<span>Flix</span></strong></a>
+      <label class="exam-label"><span>Target Exam</span><select id="exam" aria-label="Target Exam"><option>SSC CGL</option><option>SSC CHSL</option><option>SSC GD</option></select></label>
+      <button class="icon-button" id="theme" type="button" aria-label="Dark mode" aria-pressed="false"><span aria-hidden="true" id="theme-icon">☾</span></button>
+    </header>
+    <main class="layout" id="dashboard" tabindex="-1">
+      <div class="page-heading">
+        <h1>Dashboard</h1>
+        <p id="dashboard-context">Your SSC CGL study workspace</p>
+      </div>
+      <section class="continue card" aria-labelledby="continue-heading">
+        <div class="continue-copy">
+          <p class="section-label" id="continue-label">Your next practice</p>
+          <h2 id="continue-heading">Number Analogy</h2>
+          <p id="continue-description">Try a short sample set and get feedback on every answer.</p>
+          <button class="button primary" id="continue-action" type="button">Start sample practice <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="continue-progress">
+          <div class="progress-heading"><span>Practice progress</span><strong id="progress-count">0 of 3</strong></div>
+          <progress id="continue-meter" value="0" max="3" aria-label="Practice progress"></progress>
+          <p>Practice Mode · General Intelligence &amp; Reasoning</p>
+        </div>
+      </section>
+      <section aria-labelledby="study-heading">
+        <h2 id="study-heading">Start studying</h2>
+        <div class="study-grid">
+          <button class="card study-card" data-activity="mock"><span class="study-icon" aria-hidden="true">▤</span><span><strong>Mock Tests</strong><small>Full-length and sectional tests</small></span><span class="arrow" aria-hidden="true">→</span></button>
+          <button class="card study-card" data-activity="pyq"><span class="study-icon" aria-hidden="true">◷</span><span><strong>PYQs</strong><small>Papers by year and shift</small></span><span class="arrow" aria-hidden="true">→</span></button>
+          <button class="card study-card" data-activity="chapter"><span class="study-icon" aria-hidden="true">▦</span><span><strong>Chapter Tests</strong><small>Practise one topic at a time</small></span><span class="arrow" aria-hidden="true">→</span></button>
+        </div>
+      </section>
+      <section aria-labelledby="progress-heading">
+        <h2 id="progress-heading">Your progress</h2>
+        <dl class="stats-grid">
+          <div class="card stat"><dt>Sessions completed</dt><dd id="sessions">0</dd></div>
+          <div class="card stat"><dt>Answers checked</dt><dd id="checked">0</dd></div>
+          <div class="card stat"><dt>Practice accuracy</dt><dd id="accuracy">—</dd></div>
+        </dl>
+      </section>
+      <section aria-labelledby="recent-heading">
+        <div class="heading-row"><h2 id="recent-heading">Recent activity</h2><button class="button quiet" data-panel="history">View all</button></div>
+        <div class="card activity-row" id="recent"></div>
+      </section>
+    </main>
+  </div>
+  <nav class="bottom-nav" aria-label="Mobile study navigation">
+    <a class="nav-item" href="./" aria-current="page"><span class="glyph" aria-hidden="true">⌂</span>Dashboard</a>
+    <button class="nav-item" data-activity="mock"><span class="glyph" aria-hidden="true">▤</span>Mock Tests</button>
+    <button class="nav-item" data-activity="pyq"><span class="glyph" aria-hidden="true">◷</span>PYQs</button>
+    <button class="nav-item" data-activity="chapter"><span class="glyph" aria-hidden="true">▦</span>Chapter Tests</button>
+    <button class="nav-item" data-panel="more"><span class="glyph" aria-hidden="true">≡</span>More</button>
+  </nav>
+  <dialog id="panel" aria-labelledby="panel-title">
+    <div class="dialog-heading"><h2 id="panel-title"></h2><form method="dialog"><button class="icon-button" aria-label="Close panel" autofocus>×</button></form></div>
+    <div id="panel-body" class="panel-body"></div>
+  </dialog>
+</body>
+</html>
